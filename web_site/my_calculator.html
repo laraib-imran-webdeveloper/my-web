@@ -1,0 +1,116 @@
+<html>
+    <head>
+        <title>calculator</title>
+    </head>
+
+    <body>
+        <style>
+            *{
+                padding: 0px;
+                margin: 0px;
+                box-sizing: border-box;
+            }
+            body{
+                height: 100vh;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                background-image: url('math.jfif');
+            }
+            .containor{
+                padding: 20px;
+                border-radius: 20px;
+                box-shadow: 0 10px 30px rgb(67, 49, 49);
+            }
+            #display{
+                width: 100%;
+                height: 70px;
+                border: none;
+                outline: none;
+                border-radius: 10px;
+                font-size: 20px;
+                align-items: right;
+                margin-bottom: 15px;
+                padding: 12px;
+                background-color: rgb(243, 187, 132);
+            }
+            .button{
+                display: grid;
+                grid-template-columns: repeat(4,70px);
+                gap: 10px;
+            }
+
+            button{
+                height: 65px;
+                border: none;
+                border-radius: 12px;
+                font-size: 22px;
+                cursor: pointer;
+                transition: 0.3s;
+                /* background-color: rgb(176, 170, 170); */
+            }
+            button:hover{
+                transform: scale(1.05);
+            }
+            .clear{
+                background-color: darksalmon;
+            }
+            .equal{
+                background-color: rgb(150, 232, 141);
+            }
+            .operator_1{
+                background-color: lightcoral;
+            }
+            .operator{
+                background-color: rgb(144, 215, 238);
+            }
+        </style>
+
+        <div class="containor">
+            <input type="text" id="display" readonly>
+
+            <div class="button">
+                <button class="clear" onclick="clearDisplay">C</button>
+                <button class="operator_1" onclick="appendValue('/')">/</button>
+                <button class="operator_1" onclick="appendValue('*')">*</button>
+                <button class="operator_1" onclick="appendValue('-')">-</button>
+
+                <button class="operator" onclick="appendValue('7')">7</button>
+                <button class="operator" onclick="appendValue('8')">8</button>
+                <button class="operator" onclick="appendValue('9')">9</button>
+                <button class="operator_1" onclick="appendValue('+')">+</button>
+
+                <button class="operator" onclick="appendValue('4')">4</button>
+                <button class="operator" onclick="appendValue('5')">5</button>
+                <button class="operator" onclick="appendValue('6')">6</button>
+                <button class="equal" onclick="calculate()">=</button>
+
+                <button class="operator" onclick="appendValue('1')">1</button>
+                <button class="operator" onclick="appendValue('2')">2</button>
+                <button class="operator" onclick="appendValue('3')">3</button>
+                <button class="operator" onclick="appendValue('0')">0</button>
+            </div>
+        </div>
+
+        <script>
+            let display = document.getElementById('display')
+            
+            function appendValue(value){
+                display.value += value;
+            }
+
+            function clearDisplay(){
+                display.value = "";
+            }
+            function calculate(){
+                try{
+                    display.value = eval(display.value);
+                }
+                catch{
+                    display.value = "Error"
+                }
+            }
+        </script>
+
+    </body>
+</html>
