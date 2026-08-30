@@ -1,0 +1,565 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="baking.png">
+    <title>Document</title>
+</head>
+<body>
+    <audio autoplay loop >
+      <source loop src="sound.mp3">
+    </audio>
+    <style>
+        *{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: sans-serif;
+}
+body{
+    width: 100%;
+    height: 100%;
+    background: rgb(255, 68, 161);
+}
+header{
+    width: 100%;
+    height: 100vh;
+    background-image: url(main\ cake.jpg);
+    position: relative;
+    padding: 10px 9px;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+nav{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 0;
+}
+.btn button{
+    border: thick rgb(132, 132, 250);
+    outline: none;
+    padding: 14px 20px;
+    font-size: 15px;
+    font-weight: 600;
+    border-radius: 35px;
+    margin-bottom: 7px;
+    cursor: pointer;
+}
+nav .cake{
+    background-color: rgb(255, 169, 239);
+    border: 3px solid rgb(132, 132, 250);
+    transform: scale(1);
+    /* transition:  0.6s ease; */
+}
+nav .cake:hover{
+    size: 30px;
+    border:6px solid  red;
+    transform: scale(1);
+    transition:  0.6s ease;
+}
+nav .balloons{
+    background-color: rgb(243, 243, 116);
+    border: 3px solid rgb(132, 132, 250);
+    transform: scale(1);
+}
+nav .balloons:hover{
+    size: 30px;
+    border:6px solid  red;
+    transform: scale(1);
+    transition:  0.6s ease;
+}
+.header_text{
+    display: grid;
+    place-items: left;
+    text-align: left;
+    margin: 5%;
+}
+.header_text h1{
+    font-size: 60px;
+    font-weight: 400px;
+    line-height: 55px;
+    margin: 5px;
+    color: rgb(1, 1, 1);
+}
+.header_text h3{
+    font-size: 50px;
+    font-weight: 500px;
+    line-height: 45px;
+    margin: 5px;
+    color: rgb(0, 0, 0);
+}
+.header_text h4{
+    font-size:35px;
+    font-weight: 400px;
+    line-height: 35px;
+    margin: 5px;
+    color: rgb(0, 0, 0);
+}
+.header_text p{
+    font-size:35px;
+    font-weight: 400px;
+    line-height: 35px;
+    margin: 5px;
+    color: rgb(0, 0, 0);
+}
+hr{
+    background: rgb(182, 124, 240);
+    width: 100%;
+    height: 7px;
+    border: 0;
+    outline: 0;
+}
+.scrool{
+    height: 800px;
+    overflow-y: auto;
+    display: grid;
+    align-items: center;
+    justify-content: center;
+}
+
+.scrool::-webkit-scrollbar{
+    background: linear-gradient(rgb(255, 143, 162),rgb(243, 181, 181));
+}
+.scrool::-webkit-scrollbar-thumb{
+    /* background: transparent;
+    background: linear-gradient(rgb(255, 143, 162),rgb(243, 181, 181)); */
+    width: 100px;
+    
+}
+.scrool:hover::-webkit-scrollbar-thumb{
+    background: rgb(0, 0, 0);
+    width: 100px;
+    
+}
+.creat_playlist h3{
+     color: rgb(0, 0, 0);
+     font-size: 30px;
+}
+.creat_playlist p{
+    color: rgb(6, 6, 6);
+    font-size: 30px;
+    margin: 10px 0px;
+}
+.creat_playlist button{
+    padding: 8px 20px;
+    border-radius: 10px;
+    outline: 0px;
+    border: 0;
+    font-weight: 800px;
+    /* margin-bottom: 10px; */
+    cursor: pointer;
+}
+.image img {
+  width: 250px;
+  height: auto;
+  border-radius: 20px;
+  transform: scale(1);
+  transform: scale(0.9);
+    transition:  0.6s ease;
+}
+.image img:hover{
+  width: 250px;
+  height: auto;
+  border-radius: 20px;
+  transform: scale(1);
+  /* transform: scale(0.9);
+    transition:  0.6s ease; */
+}
+.footer{
+        width: 100%;
+        padding: 50px 12% 20px;
+    }
+    .footer .row{
+        width: 90%;
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap:50px;
+        padding: 20px 0;
+    }
+    .footer .row .col a{
+        display: block;
+        color: #000000;
+        text-decoration: underline;
+        margin-bottom: 10px;
+        font-size: 14px;
+        font-weight: 550;
+    }
+    .footer h2{
+        font-size: 20px;
+        color: #000000;
+        margin-bottom:30px ;
+    }
+    .footer .ii{
+        color: #000000;
+        margin-top: 15px ;
+        font-size: 14px;
+    }
+    .footer .oo{
+        color: #000000;
+        margin-top: 15px ;
+        font-size: 11px;
+    }
+h1 {
+  margin-top: 20px;
+}
+
+/* 🎂 Cake Image */
+.cake {
+  position: relative;
+  width: 250px;
+  margin: 50px auto;
+  cursor: pointer;
+}
+
+.cake img {
+  width: 100%;
+  transition: 1s;
+  border-radius: 15px;
+}
+
+.cut img {
+  transform: scale(0.9) rotate(-5deg);
+}
+
+/* 🕯️ Candle */
+.candle {
+  width: 10px;
+  height: 40px;
+  background: blue;
+  position: absolute;
+  top: -40px;
+  left: 50%;
+  transform: translateX(-50%);
+  border-radius: 3px;
+}
+
+/* 🔥 Flame */
+.flame {
+  width: 12px;
+  height: 12px;
+  background: orange;
+  border-radius: 50%;
+  position: absolute;
+  top: -15px;
+  left: -1px;
+  animation: flicker 0.2s infinite;
+}
+
+@keyframes flicker {
+  0% { transform: scale(1); opacity: 1; }
+  100% { transform: scale(1.2); opacity: 0.7; }
+}
+
+/* 🎉 Confetti */
+.confetti {
+  position: fixed;
+  width: 10px;
+  height: 10px;
+  top: -10px;
+  animation: fall 6s linear forwards;
+}
+
+@keyframes fall {
+  to { transform: translateY(100vh) rotate(360deg); }
+}
+
+/* 🎈 Balloons */
+.balloon {
+  width: 40px;
+  height: 50px;
+  border-radius: 50%;
+  position: fixed;
+  bottom: -100px;
+  animation: floatUp 10s linear forwards;
+}
+
+@keyframes floatUp {
+  to {
+    transform: translateY(-120vh);
+  }
+}
+  
+
+
+
+
+
+    
+    </style>
+    <header>
+    <nav>
+        <div class="logo">
+             <!-- <img src="first img.jpg" alt=""> -->
+             </div>
+             <div class="btn">
+             <button class="cake" ><a href="bady.html">home🏠</a></button>
+             <button class="balloons"><a href="balloons.html">Balloons🎈</a></button>
+        </div>
+    </nav>
+         <div class="header_text">
+             <h1>  Happy BIRTHday🎀  </h1>
+             <br>
+             <h3>WEB DEVELOPER🥳</h3>
+             <br>
+             <h4> its cake section only for you</h4>
+             <br>
+             <p><i>Code Master 💻🎉</i></p>
+         </div>
+    </header>
+             <hr>
+             <h1 >🎉 Click Cake 🎂</h1>
+
+<div class="cake" id="cake">
+  <img src="me.jpg" alt="cake">
+
+  <div class="candle">
+    <div class="flame" id="flame"></div>
+  </div>
+</div>
+
+<!-- 🔊 Sounds -->
+<audio id="cutSound" src="soun.mp3"></audio>
+<audio id="bgMusic" src="soun.mp3" loop></audio>
+        <div class="containor">
+        <div class="scrool">
+        <div class="creat_playlist">
+             <h3>23 & Still Not Fully Loaded ⏳</h3>
+             <p>Cake in Progress…</p>
+             <!-- <button>creat playlist</button>  -->
+             <div class="image">
+             <!-- Left Image -->
+         <div class="hero">
+         <div class="image left">
+             <img src="icon.jpg" alt="Left Birthday Image">
+         </div>
+
+             <!-- Center Text -->
+         <div class="text">
+             <h1>23 Years of Trial & Error 🐞</h1>
+             <p>Mostly Error, Still Awesome</p>
+         </div>
+
+             <!-- Right Image -->
+         <div class="image right">
+             <img src="cake6.jpg" alt="Right Birthday Image">
+         </div>
+         </div>
+         </div>
+         </div>
+         <!-- <div class="creat_playlist">
+             <h3>let find some podcast to follow</h3>
+             <p>we will keep you updated  on yiu new episode</p>
+             <button>Browser podcast</button>
+         </div> -->
+         <!-- </div> -->
+         <!-- ==========second_scrool================ -->
+          <div class="scrool">
+        <!-- <div class="creat_playlist">
+             <h3>Creat your first playlist</h3>
+             <p>its easy we will help you</p>
+             <button>creat playlist</button>  -->
+             <div class="image">
+             <!-- Left Image -->
+         <div class="hero">
+         <div class="image left">
+             <img src="cake5.jpg" alt="Left Birthday Image">
+         </div>
+
+             <!-- Center Text -->
+         <div class="text">
+             <h1>Error 404: Youth Not Found 🎂</h1>
+             <p>But Cake Is Available</p>
+         </div>
+
+             <!-- Right Image -->
+         <div class="image right">
+             <img src="cake4.jpg" alt="Right Birthday Image">
+         </div>
+         </div>
+         </div>
+         </div>
+         <!-- <div class="creat_playlist">
+             <h3>let find some podcast to follow</h3>
+             <p>we will keep you updated  on yiu new episode</p>
+             <button>Browser podcast</button>
+         </div> -->
+         </div>
+         <!-- ================second_scroll============ -->
+          <div class="scrool">
+        <div class="creat_playlist">
+             <h3>Born to Code 💻</h3>
+             <p>Friend, Legend, Developer</p>
+             <!-- <button>creat playlist</button>  -->
+             <div class="image">
+             <!-- Left Image -->
+         <div class="hero">
+         <div class="image left">
+             <!-- <img src="cake9.jpg" alt="Left Birthday Image"> -->
+              <img src="you.jpg" alt="Left Birthday Image">
+         </div>
+
+             <!-- Center Text -->
+         <div class="text">
+             <h1>Happy Birthday, Coder</h1>
+             <p>23 Years and Counting</p>
+         </div>
+
+             <!-- Right Image -->
+         <div class="image right">
+             <img src="cake 3.jpg" alt="Right Birthday Image">
+         </div>
+         </div>
+         </div>
+         </div>
+         <!-- <div class="creat_playlist">
+             <h3>let find some podcast to follow</h3>
+             <p>we will keep you updated  on yiu new episode</p>
+             <button>Browser podcast</button>
+         </div> -->
+         </div>
+         </div>
+         <div class="scrool">
+        <div class="creat_playlist">
+             <h3>Hello, World!</h3>
+             <p>Powered by Logic & Coffee</p>
+             <!-- <button>creat playlist</button>  -->
+             <div class="image">
+             <!-- Left Image -->
+         <div class="hero">
+         <div class="image left">
+             <img src="cake2.jpg"Left Birthday Image">
+         </div>
+
+             <!-- Center Text -->
+         <div class="text">
+             <h1>Still Debugging Life</h1>
+             <p>Code. Coffee. Cake.</p>
+         </div>
+
+             <!-- Right Image -->
+         <div class="image right">
+             <img src="cake1.jpg" alt="Right Birthday Image">
+         </div>
+         </div>
+         </div>
+         </div>
+         <div class="creat_playlist">
+             <!-- <h3>let find some podcast to follow</h3>
+             <p>we will keep you updated  on yiu new episode</p>
+             <button>Browser podcast</button> -->
+         </div>
+         </div>
+    </div> 
+    <!-- =========footer========     -->
+     <footer>
+        <div class="footer">
+        <h2>Question? Contect us</h2>
+
+        <div class="row">
+            <div class="col">
+                <a href="">Built with Cake🍰🎂</a>
+                <a href="">Birthday Legends Zone</a>
+                <a href="">Friendship Goals Since Day One</a>
+                <a href="">Laughs, Love & Late Nights</a>
+            </div>
+
+            <div class="col">
+                <a href="">Powered by Friendship 💙</a>
+                <a href="">Another Year of Awesomeness</a>
+                <a href="">Too Cool to Grow Old 😎</a>
+                <a href="">Memories That Never Expire</a>
+            </div>
+
+            <div class="col">
+                <a href="">Friends Who Party Together</a>
+                <a href="">Celebrating You Always 🎉</a>
+                <a href="">Cheers to More Crazy Years🥂</a>
+                <a href="">Made Special for a Special Friend</a>
+            </div>
+
+            <div class="col">
+                <a href="">Born to Be Awesome 😎</a>
+                <a href="">Aging Like Fine Cake 🍰</a>
+                <a href="">Powered by Smiles & Memories</a>
+                <!-- <a href="">Speed test</a> -->
+            </div>
+            <!-- <button class="English">English<i class="fa-solid fa-angle-down"></i></button> -->
+        </div>
+        <button class="English">English<i class="fa-solid fa-angle-down"></i></button>
+        
+    </div>
+     </footer>
+     <!-- <a href="bady.html">🏠</a> -->
+     <a href="bady.html">⬅ Back to Home</a>
+
+     <script>
+        const cake = document.getElementById("cake");
+const cutSound = document.getElementById("cutSound");
+const bgMusic = document.getElementById("bgMusic");
+const flame = document.getElementById("flame");
+
+let clicked = false;
+
+/* 🎵 Start music on first click */
+document.body.addEventListener("click", () => {
+  bgMusic.play().catch(()=>{});
+}, { once: true });
+
+cake.addEventListener("click", () => {
+  if(clicked) return;
+  clicked = true;
+
+  cake.classList.add("cut");
+
+  // 🔊 Sound
+  cutSound.play();
+
+  // 🔥 Blow candle
+  flame.style.display = "none";
+
+  // 🎉 Continuous celebration
+  let confettiInterval = setInterval(createConfetti, 700);
+  let balloonInterval = setInterval(createBalloons, 1200);
+
+  // ⏱️ Stop after 12 seconds
+  setTimeout(() => {
+    clearInterval(confettiInterval);
+    clearInterval(balloonInterval);
+  }, 12000);
+});
+
+/* 🎉 Confetti */
+function createConfetti() {
+  for (let i = 0; i < 30; i++) {
+    let c = document.createElement("div");
+    c.className = "confetti";
+
+    c.style.left = Math.random() * 100 + "vw";
+    c.style.background = `hsl(${Math.random()*360},100%,50%)`;
+
+    document.body.appendChild(c);
+    setTimeout(() => c.remove(), 6000);
+  }
+}
+
+/* 🎈 Balloons */
+function createBalloons() {
+  for (let i = 0; i < 6; i++) {
+    let b = document.createElement("div");
+    b.className = "balloon";
+
+    b.style.left = Math.random() * 100 + "vw";
+    b.style.background = `hsl(${Math.random()*360},100%,60%)`;
+    b.style.animationDuration = (6 + Math.random()*4) + "s";
+
+    document.body.appendChild(b);
+    setTimeout(() => b.remove(), 10000);
+  }
+}
+
+     </script>
+</body>
+</html>

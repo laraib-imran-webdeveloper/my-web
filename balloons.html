@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <link rel="icon" href="baking.png">
+<style>
+*{
+  padding:0;
+  margin:0;
+  box-sizing:border-box;
+}
+body{
+  background-color: hotpink;
+}
+.container{
+  width:100%;
+  height:100vh;
+    /* background-image: url(bady_2.jpg); */
+    
+}
+ .im img{
+  width:100%;
+  height:100vh;
+  object-fit:cover;
+  /* background-image: url(bady_2.jpg); */
+ }
+
+/* Text */
+.text{
+  position:absolute;
+  top:30%;
+  left:40%;
+  font-size:50px;
+}
+.text_2{
+  position:absolute;
+  top:38%;
+  left:38%;
+  font-size:50px;
+}
+.text_3{
+  position:absolute;
+  top:45%;
+  left:32%;
+  font-size:50px;
+}
+
+/* Button */
+.btn_2{
+  width:450px;
+  font-size:50px;
+  background:rgb(255,88,177);
+  border:1px solid black;
+  border-radius:20px;
+  position:absolute;
+  top:60%;
+  left:32%;
+  cursor:pointer;
+}
+
+/* Popup */
+.popup{
+  display:none;
+  position:fixed;
+  top:0;
+  left:0;
+  width:100%;
+  height:100%;
+  background:rgba(255,192,203,0.9);
+  justify-content:center;
+  align-items:center;
+}
+
+/* Card */
+.card{
+  background:white;
+  padding:30px;
+  border-radius:20px;
+  text-align:center;
+  width:300px;
+}
+
+/* Image */
+#popupImg{
+  width:200px;
+  margin:10px 0;
+  border-radius:10px;
+}
+
+/* Buttons inside popup */
+.card button{
+  padding:10px 20px;
+  margin:5px;
+  border:none;
+  border-radius:20px;
+  background:hotpink;
+  color:white;
+  cursor:pointer;
+}
+
+/* Dots */
+.dot{
+  height:10px;
+  width:10px;
+  background:gray;
+  display:inline-block;
+  border-radius:50%;
+  margin:5px;
+}
+.active{
+  background:red;
+}
+.im{
+  position: relative;   /* ⭐ important */
+}
+
+nav{
+  position: absolute;   /* ⭐ image ke upar lane ke liye */
+  top: 20px;
+  right: 20px;
+  display: flex;
+  gap: 10px;
+  z-index: 10;
+}
+
+nav button{
+  padding: 10px 18px;
+  font-size: 16px;
+  font-weight: 600;
+  border-radius: 35px;
+  cursor: pointer;
+}
+
+/* Fix links inside button */
+nav button a{
+  text-decoration: none;
+  color: black;
+  display: block;
+}
+
+/* Button styles */
+nav .cake{
+  background-color: rgb(255, 169, 239);
+  border: 3px solid rgb(132, 132, 250);
+}
+
+nav .cake:hover{
+  border: 6px solid red;
+  transition: 0.4s;
+}
+
+nav .home{
+  background-color: rgb(243, 243, 116);
+  border: 3px solid rgb(132, 132, 250);
+}
+
+nav .home:hover{
+  border: 6px solid red;
+  transition: 0.4s;
+}
+
+</style>
+</head>
+
+<body>
+<audio autoplay loop >
+      <source loop src="sound.mp3">
+    </audio>
+<div class="container">
+  <!-- <div class="btn">
+      <nav>
+    <button class="home">Home🏡</button>
+    <button class="cake">Cake🍰🎂</button>
+  </nav>
+  </div> -->
+
+  <div class="im">
+    <nav>
+    <button class="home"><a href="bady.html">Home🏡</a></button>
+    <button class="cake"><a href="cake.html">Cake🍰🎂</a></button>
+  </nav>
+    <img src="bady_2.jpg">
+
+    <h1 class="text">Hi Coder✨</h1>
+    <h3 class="text_2">Balloon bn jo</h3>
+    <h4 class="text_3">Wrna ma ban do gi🤭</h4>
+
+    <!-- Button -->
+    <button class="btn_2" onclick="openPopup()">Bna dia deekho🎈</button>
+  </div>
+</div>
+
+<!-- ✅ Popup (ONLY ONE) -->
+<div id="popup" class="popup">
+  <div class="card">
+    <p id="message"></p>
+
+    <img id="popupImg" src="">
+
+    <div id="buttons"></div>
+
+    <div class="dots">
+      <span class="dot"></span>
+      <span class="dot"></span>
+      <span class="dot"></span>
+    </div>
+  </div>
+</div>
+
+<script>
+let step = 0;
+
+let messages = [
+  "Do you wanna see what I made??",
+  "It's Your Special Day Yeyey!",
+  "Have a look at it, DEVELOPER"
+];
+
+let images = [
+  "balloons.jpg",
+  "balloons.jpg",
+  "balloons.jpg"
+];
+
+function openPopup(){
+  document.getElementById("popup").style.display="flex";
+  step=0;
+  updateContent();
+}
+
+function nextStep(){
+  step++;
+  if(step>=messages.length){
+    document.getElementById("popup").style.display="none";
+    return;
+  }
+  updateContent();
+}
+
+function updateContent(){
+  document.getElementById("message").innerText=messages[step];
+  document.getElementById("popupImg").src=images[step];
+
+  let btnDiv=document.getElementById("buttons");
+
+  if(step===0){
+    btnDiv.innerHTML=`
+      <button onclick="nextStep()">Yes 🎉</button>
+      <button onclick="document.getElementById('popup').style.display='none'">No</button>
+    `;
+  }
+  else if(step===1){
+    btnDiv.innerHTML=`<button onclick="nextStep()">Next</button>`;
+  }
+  else{
+    btnDiv.innerHTML=`<button onclick="nextStep()">Let's Go 🚀</button>`;
+  }
+
+  let dots=document.querySelectorAll(".dot");
+  dots.forEach((dot,i)=>{
+    dot.classList.toggle("active", i===step);
+  });
+}
+</script>
+
+</body>
+</html>
